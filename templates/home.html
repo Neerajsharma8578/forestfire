@@ -1,0 +1,128 @@
+<html>
+    <body>
+        <div class="'login">
+           
+            <title>FWI Prediction</title>
+            <style>
+                body { 
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh; /* Ensure background image covers full viewport */
+                    background-image: url('/static/forestfire.jpg'); /* Path to your image */
+                    background-size: cover; /* Make image cover the entire page */
+                    background-position: center; /* Center the image */
+                    background-repeat: no-repeat;
+                    
+                  
+                    
+
+                }
+                
+                *{
+                    margin:0;
+                    padding:0;
+                    box-sizing:border-box;
+                    font-family:"poppins", sans-serif;  
+                  }
+                  .wrapper{
+                    position:relative;
+                    width:500px;
+                    height:650px;
+                   background-color: yellow;
+                   box-shadow:0 0 50px #0ef;
+                    border-radius:20px;
+                    padding:40px;
+                  overflow:hidden;
+
+                  padding: 10px;
+                  border-radius: 10px;
+                  text-align: center; 
+                  
+                }
+                .wrapper:hover{
+                    animation:animate 1s linear infinite;
+                }
+                @keyframes animate{
+                    100%{
+                        filter:hue-rotate(360deg);
+                    }
+                }
+                
+                
+                  
+                .container {
+                    max-width: 400px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                }
+                
+                form {
+                    margin-bottom: 20px;
+                }
+                form input {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    font-size:15px;
+                }
+                form button {
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+                form button:hover {
+                    background-color: #0056b3;
+                }
+                
+                .fixed-paragraph {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(0, 0, 0, 0.75); /* Add a semi-transparent background */
+                    color: white;
+                    padding: 10px;
+                    text-align: center;
+                    font-size: 21px;
+                }
+            </style>
+
+        </div>
+        <div class="wrapper">
+            <h1>FWI[Fire Weather Index] prediction</h1>
+
+        <form action="{{url_for('predict_datapoint')}}" method="post">
+            <input type="text" name="Temperature" placeholder="Temperature(10-50 Celsius)" required="required" /><br>
+            
+            <input type="text" name="RH" placeholder="RH(10-100 %)" required="required"/><br>
+        
+            <input type="text" name="Ws" placeholder="Ws(1-40 Km/h)" required="required"/><br>
+            <input type="text" name="Rain" placeholder="Rain(0-20 mm)" required="required"/><br>
+            <input type="text" name="FFMC" placeholder="FFMC(25-95)" required="required"/><br>
+            <input type="text" name="DMC" placeholder="DMC(1-70)" required="required"/><br>
+            <input type="text" name="ISI" placeholder="ISI(0-20)" required="required"/><br>
+            <input type="text" name="Classes" placeholder="Classes(0:Not Fire, 1:Fire)" required="required"/><br>
+            <input type="text" name="Region" placeholder="Region(0:Bejaia, 1:Sidi Bel-abbes)" required="required"/><br>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">predict</button>
+        
+        </form>
+        
+        
+        <h2 class="heading" style="color: rgb(238, 70, 9);">
+            THE FWI Prediction is : {{result}}
+        </h2>
+    </div>
+        <p class="fixed-paragraph"><marquee scrollamount="15">The FWI is a numerical rating of the risk of fire and its intensity. It is widely used to monitor and predict fire danger in forests and grasslands.</marquee></p>
+    </body>
+</html>
