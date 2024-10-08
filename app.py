@@ -3,7 +3,8 @@ from flask import Flask,request,jsonify,render_template
 import numpy as numpy
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-app=Flask(__name__)
+application=Flask(__name__)
+app=application
 
 regressor_model=pickle.load(open('models/regressor.pkl','rb'))
 standard_scaler=pickle.load(open('models/scaler.pkl','rb'))
