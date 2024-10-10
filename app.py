@@ -9,8 +9,8 @@ app=application
 regressor_model=pickle.load(open('models/regressor.pkl','rb'))
 standard_scaler=pickle.load(open('models/scaler.pkl','rb'))
 @app.route('/')
-def index():
-    return render_template('index.html')
+#def index():
+#   return render_template('index.html')
 
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
